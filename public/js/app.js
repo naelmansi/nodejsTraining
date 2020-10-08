@@ -21,7 +21,7 @@ fetch('http://puzzle.mead.io/puzzle').then((response)=>{
 // })
 
 
-const weatherForm = document.querySelector('form')
+const weatherForm = document.querySelector('form') // querySelector will fitch the first item only ...
 const Searchlocation = document.querySelector('input').value
 const messageOne = document.querySelector('#message-1') // its is line document.getElementByid ....
 const messageTwo = document.querySelector('#message-2')
@@ -31,28 +31,27 @@ messageOne.textContent=''
 
 weatherForm.addEventListener('submit',(e)=>{
     const Searchlocation = document.querySelector('input').value
-    e.preventDefault()
+    e.preventDefault() // prevent the page from refrsh on submit ...
     console.log (Searchlocation)
-    if (!Searchlocation){
-        return console.log ('you have to enter location to search !')
+    if (!Searchlocation){ // if there is no value in the search ..
+        messageOne.textContent='please enter valid location, it can not be empty.'
+        messageTwo.textContent= 'waiting for a valid address....'
+
+        return console.log ('you have to enter location to search !') // return used to exit the function , it is away to avoid using elese..
     }
     // const url = 'http://localhost:3000/weather?address='+ Searchlocation // for heroku deployment, we can not use, the localhost
        const url = '/weather?address='+ Searchlocation // this one will work with both, localhost and heroku
 
-    console.log ('url: ',url)
+//    console.log ('url: ',url)
    
     messageOne.textContent = 'loading data ... please wait ..'
         messageTwo.textContent = '.'
 
-    fetch(url).then((response)=>{
-
-       
-        
+    fetch(url).then((response)=>{        
             response.json().then((data)=>{
                 if (data.error){
-                return messageOne.textContent= 'somthing wrong check and try again'
-              
-            }
+                return messageOne.textContent= 'somthing wrong, maybe the location name! Check and try again'
+                }
               messageOne.textContent = 'location is: ' + data.location 
               messageTwo.textContent = 'the forecast is: '+ data.forecast 
                 //console.log (data)
