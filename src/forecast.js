@@ -25,7 +25,7 @@ const forecast = (longtiude,latitude,callback)=>{
    //const url = 'http://api.weatherstack.com/current?access_key=6de170891a158f428837180415ed1d25&query=37.8267,-122.4233&units=f'
    // console.log (url)
 
-    request ({url /* no need to url: url (using short hand syntax) */, json: true},(error,{body})=>{
+    request ({url /* no need to url: url (using short hand syntax) */, json: true},(error,{body})=>{ 
          // I can remove the below const section, howerver, it will be easier 
 
         const success = body.success
