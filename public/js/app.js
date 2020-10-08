@@ -36,7 +36,8 @@ weatherForm.addEventListener('submit',(e)=>{
     if (!Searchlocation){
         return console.log ('you have to enter location to search !')
     }
-    const url = 'http://localhost:3000/weather?address='+ Searchlocation
+    // const url = 'http://localhost:3000/weather?address='+ Searchlocation // for heroku deployment, we can not use, the localhost
+       const url = '/weather?address='+ Searchlocation // this one will work with both, localhost and heroku
 
     console.log ('url: ',url)
    
