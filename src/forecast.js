@@ -39,9 +39,10 @@ const forecast = (longtiude,latitude,callback)=>{
         }else {
             const temperature= body.current.temperature
             const feelslike= body.current.feelslike
+            const windSpeed = body.current.wind_speed
             const weather_descriptions=  body.current.weather_descriptions
 
-            callback(undefined, " it is currently :" + temperature + ' degrees.However it feels like it is ' + feelslike +'! generally speaking  it is ' + weather_descriptions)
+            callback(undefined, " it is currently :" + temperature + ' degrees.However it feels like it is ' + feelslike +'! generally speaking  it is ' + weather_descriptions + ', at last , wind is expcted to be: ' + windSpeed)
         }
 
     }) //request
